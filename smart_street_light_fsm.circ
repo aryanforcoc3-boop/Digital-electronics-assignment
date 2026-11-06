@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="2.7.1" version="1.0">
+  This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
+  <lib desc="#Wiring" name="0"/>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#Memory" name="4"/>
+  <lib desc="#I/O" name="5"/>
+  <lib desc="#Base" name="6"/>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <circuit name="main">
+    <a name="circuit" val="main"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+
+    <!-- ===== Title ===== -->
+    <comp lib="6" loc="(520,60)" name="Text">
+      <a name="text" val="SMART STREET-LIGHT CONTROLLER FSM"/>
+      <a name="font" val="SansSerif bold 20"/>
+    </comp>
+
+    <!-- ===== Inputs ===== -->
+    <comp lib="0" loc="(180,170)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="P (Pedestrian)"/>
+    </comp>
+    <comp lib="0" loc="(180,220)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="T (Timer)"/>
+    </comp>
+    <comp lib="0" loc="(180,270)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="C (Crossing Timer)"/>
+    </comp>
+    <comp lib="0" loc="(280,380)" name="Clock">
+      <a name="label" val="CLOCK"/>
+    </comp>
+
+    <!-- ===== NOT gates in front of the flip-flops ===== -->
+    <comp lib="1" loc="(510,230)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(510,470)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+
+    <!-- ===== Flip-flops ===== -->
+    <comp lib="4" loc="(670,230)" name="D Flip-Flop">
+      <a name="label" val="FF1 (Q1)"/>
+    </comp>
+    <comp lib="4" loc="(670,470)" name="D Flip-Flop">
+      <a name="label" val="FF0 (Q0)"/>
+    </comp>
+
+    <!-- ===== Bottom logic ===== -->
+    <comp lib="1" loc="(410,600)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="1" loc="(410,700)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(500,700)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(570,650)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
+
+    <!-- ===== Output gates ===== -->
+    <comp lib="1" loc="(870,150)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(870,270)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+
+    <!-- ===== Tunnels (named nets) ===== -->
+    <comp lib="0" loc="(700,250)" name="Tunnel">
+      <a name="facing" val="west"/>
+      <a name="label" val="Q1bar"/>
+    </comp>
+    <comp lib="0" loc="(360,570)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Q1bar"/>
+    </comp>
+    <comp lib="0" loc="(700,440)" name="Tunnel">
+      <a name="facing" val="west"/>
+      <a name="label" val="Q0"/>
+    </comp>
+    <comp lib="0" loc="(360,630)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Q0"/>
+    </comp>
+    <comp lib="0" loc="(550,200)" name="Tunnel">
+      <a name="facing" val="west"/>
+      <a name="label" val="D1"/>
+    </comp>
+    <comp lib="0" loc="(360,710)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="D1"/>
+    </comp>
+
+    <!-- ===== LEDs ===== -->
+    <comp lib="5" loc="(920,150)" name="LED">
+      <a name="facing" val="west"/>
+      <a name="color" val="#00f000"/>
+      <a name="label" val="Main Green"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="5" loc="(920,270)" name="LED">
+      <a name="facing" val="west"/>
+      <a name="color" val="#ffe000"/>
+      <a name="label" val="Main Yellow"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="5" loc="(920,380)" name="LED">
+      <a name="facing" val="west"/>
+      <a name="color" val="#f00000"/>
+      <a name="label" val="Main Red"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="5" loc="(920,470)" name="LED">
+      <a name="facing" val="west"/>
+      <a name="color" val="#00f000"/>
+      <a name="label" val="Ped Green"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="5" loc="(920,600)" name="LED">
+      <a name="facing" val="west"/>
+      <a name="color" val="#f00000"/>
+      <a name="label" val="Ped Red"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+
+    <!-- ===== Wires: P net ===== -->
+    <wire from="(180,170)" to="(410,170)"/>
+    <wire from="(410,170)" to="(820,170)"/>
+    <wire from="(820,170)" to="(820,260)"/>
+    <wire from="(820,260)" to="(840,260)"/>
+    <wire from="(410,170)" to="(410,470)"/>
+    <wire from="(410,230)" to="(490,230)"/>
+    <wire from="(410,470)" to="(490,470)"/>
+
+    <!-- ===== Wires: T net ===== -->
+    <wire from="(180,220)" to="(300,220)"/>
+    <wire from="(300,140)" to="(300,220)"/>
+    <wire from="(300,220)" to="(300,610)"/>
+    <wire from="(300,610)" to="(380,610)"/>
+    <wire from="(300,140)" to="(840,140)"/>
+
+    <!-- ===== Wires: C net ===== -->
+    <wire from="(180,270)" to="(330,270)"/>
+    <wire from="(330,270)" to="(330,690)"/>
+    <wire from="(330,690)" to="(380,690)"/>
+
+    <!-- ===== Wires: Clock ===== -->
+    <wire from="(280,380)" to="(570,380)"/>
+    <wire from="(570,250)" to="(570,380)"/>
+    <wire from="(570,380)" to="(570,490)"/>
+    <wire from="(570,250)" to="(630,250)"/>
+    <wire from="(570,490)" to="(630,490)"/>
+
+    <!-- ===== Wires: NOT outputs to D inputs ===== -->
+    <wire from="(510,230)" to="(550,230)"/>
+    <wire from="(550,230)" to="(630,230)"/>
+    <wire from="(550,200)" to="(550,230)"/>
+    <wire from="(510,470)" to="(630,470)"/>
+
+    <!-- ===== Wires: Q1 / Q1bar ===== -->
+    <wire from="(670,230)" to="(760,230)"/>
+    <wire from="(760,230)" to="(760,380)"/>
+    <wire from="(760,380)" to="(920,380)"/>
+    <wire from="(670,250)" to="(700,250)"/>
+
+    <!-- ===== Wires: Q0 ===== -->
+    <wire from="(670,470)" to="(700,470)"/>
+    <wire from="(700,440)" to="(700,470)"/>
+    <wire from="(700,470)" to="(800,470)"/>
+    <wire from="(800,470)" to="(920,470)"/>
+    <wire from="(800,280)" to="(800,470)"/>
+    <wire from="(800,280)" to="(840,280)"/>
+
+    <!-- ===== Wires: bottom AND (Q1bar, Q0, T) ===== -->
+    <wire from="(380,590)" to="(360,590)"/>
+    <wire from="(360,570)" to="(360,590)"/>
+    <wire from="(380,600)" to="(360,600)"/>
+    <wire from="(360,600)" to="(360,630)"/>
+    <wire from="(410,600)" to="(490,600)"/>
+    <wire from="(490,600)" to="(920,600)"/>
+    <wire from="(490,600)" to="(490,640)"/>
+    <wire from="(490,640)" to="(540,640)"/>
+
+    <!-- ===== Wires: AND (D1, C) -> NOT -> OR ===== -->
+    <wire from="(380,710)" to="(360,710)"/>
+    <wire from="(410,700)" to="(480,700)"/>
+    <wire from="(500,700)" to="(520,700)"/>
+    <wire from="(520,660)" to="(520,700)"/>
+    <wire from="(520,660)" to="(540,660)"/>
+
+    <!-- ===== Wires: OR output to Main Green AND ===== -->
+    <wire from="(570,650)" to="(780,650)"/>
+    <wire from="(780,160)" to="(780,650)"/>
+    <wire from="(780,160)" to="(840,160)"/>
+
+    <!-- ===== Wires: gate outputs to LEDs ===== -->
+    <wire from="(870,150)" to="(920,150)"/>
+    <wire from="(870,270)" to="(920,270)"/>
+  </circuit>
+</project>
